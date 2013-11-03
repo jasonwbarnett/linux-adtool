@@ -18,6 +18,15 @@ Configure options: `--prefix=install_path`, `--with-ldap=/openldap_install_prefi
 ## Configuration:
 An example configuration file is installed to {prefix}/etc/adtool.cfg.dist.  Rename this to adtool.cfg and edit as appropriate.  Alternatively, command line options can be used.
 
+```
+## This can be located either ~/.adtool.cfg OR /etc/adtool.cfg
+## Do NOT surround values with either " or '
+uri ldap://dc1.example.com
+binddn cn=administrator,ou=admin,dc=example,dc=com
+bindpw passw0rd
+searchbase dc=example,dc=com
+```
+
 ## Usage:
 ```
 > adtool list ou=user,dc=example,dc=com
