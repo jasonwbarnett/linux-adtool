@@ -40,9 +40,9 @@ void usage() {
 		"operations:\n"
 		"usercreate         <username> <container>          create a new user\n"
 		"userdelete         <username>                      delete a user\n"
-		"userlock           <username>                      disable a user account\n"
-		"userunlock         <username>                      enable a user account\n"
-		"setpass            <user> [password]               set user's password\n"
+		"userlock           <sAMAccountName>                disable a user account\n"
+		"userunlock         <sAMAccountName>                enable a user account\n"
+		"setpass            <sAMAccountName> [password]     set user's password\n"
 		"usermove           <user> <new container>          move user to another container\n"
 		"userrename         <old username> <new username>   rename user\n"
 		"\n"
@@ -54,9 +54,8 @@ void usage() {
 		"groupremoveuser    <group> <user>                  remove a user from a group\n"
 		"groupsubtreeremove <container> <user>              remove a user from all groups below a given ou\n"
 		"\n"
-		"oucreate           <organizational unit name> <container>\n"
-		"                                                   create a new organizational unit\n"
-		"oudelete           <organizational unit name>      delete an organizational unit\n"
+		"oucreate           <OU name> <container>           create a new organizational unit\n"
+		"oudelete           <OU name>                       delete an organizational unit\n"
 		"\n"
 		"attributeget       <object> <attribute>            display attribute values\n"
 		"attributeadd       <object> <attribute> <value>    add an attribute\n"
@@ -116,7 +115,7 @@ void userlock(char **argv) {
 
 	username=argv[0];
 
-        dn=ad_search("name", username);
+        dn=ad_search("sAMAccountName", username);
         if(ad_get_error_num()!=AD_SUCCESS) {
                 fprintf(stderr, "error: %s\n", ad_get_error());
                 exit(1);
@@ -137,7 +136,7 @@ void userunlock(char **argv) {
 
 	username=argv[0];
 
-        dn=ad_search("name", username);
+        dn=ad_search("sAMAccountName", username);
         if(ad_get_error_num()!=AD_SUCCESS) {
                 fprintf(stderr, "error: %s\n", ad_get_error());
                 exit(1);
@@ -173,7 +172,7 @@ void setpass(char **argv) {
 		memset(argv[1], 0, strlen(argv[1]));
 	}
 
-	dn=ad_search("name", username);
+	dn=ad_search("sAMAccountName", username);
 	if(ad_get_error_num()!=AD_SUCCESS) {
 		fprintf(stderr, "error: %s\n", ad_get_error());
 		exit(1);
@@ -533,9 +532,9 @@ void search(char **argv) {
 }
 
 void oucreate(char **argv) {
-	char *ou, *container;
-        int result, dn_length;
-        char *dn;
+	char *ou,     *container;
+  int   result,  dn_length;
+  char *dn;
 
 	ou=argv[0];
 	container=argv[1];
@@ -545,8 +544,8 @@ void oucreate(char **argv) {
         snprintf(dn, dn_length, "ou=%s,%s", ou, container);
         result=ad_ou_create(ou, dn);
         if(result!=AD_SUCCESS) {
-                fprintf(stderr, "error: %s\n", ad_get_error());
-		exit(1);
+            fprintf(stderr, "error: %s\n", ad_get_error());
+		        exit(1);
         }
 }
 
