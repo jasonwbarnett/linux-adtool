@@ -13,9 +13,7 @@ make
 make install
 ```
 
-Configure options:
-	`--prefix=install_path`
-	`--with-ldap=/openldap_install_prefix`
+Configure options: `--prefix=install_path`, `--with-ldap=/openldap_install_prefix`
 
 ## Configuration:
 An example configuration file is installed to {prefix}/etc/adtool.cfg.dist.  Rename this to adtool.cfg and edit as appropriate.  Alternatively, command line options can be used.
