@@ -1,0 +1,34 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT
+AM_INIT_AUTOMAKE(adtool, 1.3.3)
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+AM_PROG_LIBTOOL
+
+# Checks for libraries.
+case "$host_os" in
+	*solaris*)
+		LDFLAGS="-lsocket -lposix4 $LDFLAGS"
+esac
+
+AC_ARG_WITH( ldap,
+[  --with-ldap=DIR	OpenLDAP install prefix ],
+[ 
+	CFLAGS="-I${with_ldap}/include $CFLAGS"
+	LDFLAGS="-L${with_ldap}/lib $LDFLAGS"
+])
+
+# Checks for header files.
+AC_CHECK_HEADERS([fcntl.h stdlib.h string.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([memset strdup])
+
+AC_CONFIG_FILES([config.h])
+
+AC_OUTPUT(Makefile src/Makefile src/lib/Makefile src/tools/Makefile src/etc/Makefile doc/Makefile doc/man/Makefile doc/man/man1/Makefile doc/html/Makefile tests/Makefile)

@@ -1,0 +1,127 @@
+.TH ADTOOL 1 "October 2002" "adtool 1.2"
+.SH NAME
+adtool - Active Directory administration tool
+.SH SYNOPSIS
+.B adtool
+[\c
+.BR \-h ]
+[\c
+.BR \-v ]
+[\c
+.BR \-H \ uri\fR]
+[\c
+.BR \-D \ binddn\fR]
+[\c
+.BR \-w \ bindpasswd\fR]
+[\c
+.BR \-b \ searchbase\fR]
+.BR operation
+[\c
+.BR arguments...]
+.SH DESCRIPTION
+.I adtool
+is a unix command line utility for Active Directory administration.  Features include user and group creation, deletion, modification, password setting and directory query and search capabilities.
+.SH OPTIONS
+.TP
+.B \-h
+Output usage information.
+.TP
+.B \-v
+Output version information.
+.TP
+.B \-H uri
+The uri of the Active Directory server to connect to, eg. ldap://ad1.example.com.
+.TP
+.B \-D binddn
+The distinguished name of the user to bind to the server as, eg. cn=admin,ou=usrs,dc=example,dc=com.
+.TP
+.B \-w password
+The password to authenticate with.
+.TP
+.B \-b searchbase
+The distinguished name of the base for any operations that involve searching the directory, eg. ou=users,dc=example,dc=com.
+.SH OPERATIONS
+.TP
+.B usercreate <username> <container>        
+create a new user
+.TP
+.B userdelete <username>
+delete a user
+.TP
+.B userlock <username>                    
+disable a user account
+.TP
+.B userunlock <username>
+enable a user account
+.TP
+.B setpass <user> [password]
+set user's password.  The password can be entered either as an argument or interactively, in which case it is not echoed back to the screen.
+.TP
+.B usermove <user> <new container>
+move user to another container
+.TP
+.B userrename <old username> <new username>
+rename user
+.TP
+.B computercreate <name> <container>        
+create a new computer account
+.TP
+.B groupcreate <group name> <container>
+create a new group
+.TP
+.B groupdelete <group name>
+delete a group
+.TP
+.B groupadduser <group> <user>
+add a user to a group
+.TP
+.B groupremoveuser <group> <user>
+remove a user from a group
+.TP
+.B groupsubtreeremove <container> <user>
+remove a user from all groups below a given ou
+.TP
+.B oucreate <organizational unit name> <container>
+create a new organizational unit
+.TP
+.B oudelete <organizational unit name>
+delete an organizational unit
+.TP
+.B attributeget <object> <attribute>
+display attribute values
+.TP
+.B attributeadd <object> <attribute> <value>
+add an attribute
+.TP
+.B attributeaddbinary <object> <attribute> <filename>
+add an attribute from a file
+.TP
+.B attributereplace <object> <attribute> <value>
+replace an attribute
+.TP
+.B attributedelete <object> <attribute> [value]
+delete an attribute or attribute instance
+.TP
+.B search <attribute> <value>
+simple ldap search
+
+.SH CONFIGURATION
+The command line options can instead be specified in a configuration file.  An example is installed to (install prefix)/etc/adtool.cfg.dist.  Rename this to adtool.cfg and edit as appropriate.
+.TP
+.B uri
+server to connect to
+.TP
+.B binddn
+distinguished name of the user to bind to the server as.
+.TP
+.B bindpw
+password to bind to the server with.
+.TP
+.B searchbase
+base for search operations.
+
+.SH AUTHOR
+Mike Dawson 
+<mjd@dexy.mine.nu> 
+http://dexy.mine.nu/adtool/
+

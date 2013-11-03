@@ -1,0 +1,29 @@
+
+15/9/2009 1.3.3 release
+15/9/2009 added GPL license header to source files
+15/9/2009 --as-needed fix, patched src/tools/Makefile.am from Gentoo bug #128678
+8/6/2009 1.3.2 release
+8/6/2009 hide passwords from ps
+4/2/2009 1.3.1 release
+4/2/2009 removed reference to list option in man page and usage
+4/2/2009 updated libtool
+13/5/2005 disable ldap referrals to work better with win2k3 sp1
+30/8/2004 optarg null pointer fixes (Hilko Bengen)
+30/8/2004 delete password from memory (Stephan Müller)
+28/4/2003 1.2 release
+28/4/2003 fixed free/NULL check in active_directory.c
+28/1/2003 added interactive password input
+28/1/2003 added computercreate function
+10/10/2002 1.1 release
+9/10/2002 implemented operation function table in main()
+9/10/2002 added list operation
+8/10/2002 fixed ad_search error message generation
+8/10/2002 got rid of object specific dn lookup functions
+8/10/2002 added userdelete operation
+8/10/2002 added -v option
+8/10/2002 changed useradd/groupadd operation names to usercreate/groupcreate
+8/10/2002 added oucreate/oudelete operations
+8/10/2002 added man page
+
+3/10/2002 initial 1.0 release
+
