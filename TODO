@@ -1,0 +1,16 @@
+dns support
+interactive password entry
+testing script
+auth test operation
+better error reporting on list
+
+add to docs:
+http://support.microsoft.com/default.aspx?scid=KB;EN-US;q247078&
+(enabling ssl)
+
+http://www.microsoft.com/windows2000/en/server/help/default.asp?url=/windows2000/en/server/help/sag_CSprocsinstallroot.htm
+(installing certificate authority)
+
+freebsd fix
+international charset support
+change url refs to sourceforge

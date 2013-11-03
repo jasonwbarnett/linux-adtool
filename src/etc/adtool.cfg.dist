@@ -1,0 +1,7 @@
+
+# use ldaps:// for secure connection - needed for setpass to work
+uri ldap://dc1.example.com
+binddn cn=administrator,ou=admin,dc=example,dc=com
+bindpw passw0rd
+searchbase dc=example,dc=com
+
