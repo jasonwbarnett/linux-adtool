@@ -1,0 +1,37 @@
+# Object files
+*.o
+*.ko
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+
+## Other crap
+Makefile
+config.h
+config.log
+config.status
+doc/Makefile
+doc/html/Makefile
+doc/man/Makefile
+doc/man/man1/Makefile
+libtool
+src/Makefile
+src/etc/Makefile
+src/lib/.deps/
+src/lib/Makefile
+src/tools/.deps/
+src/tools/Makefile
+tests/Makefile
