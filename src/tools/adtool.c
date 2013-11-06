@@ -57,10 +57,10 @@ void usage() {
 		"oucreate           <OU name> <container>           create a new organizational unit\n"
 		"oudelete           <OU name>                       delete an organizational unit\n"
 		"\n"
-		"attributeget       <object> <attribute>            display attribute values\n"
+		"attributeget       <sAMAccountName> <attribute>    display attribute values\n"
 		"attributeadd       <object> <attribute> <value>    add an attribute\n"
 		"attributeaddbinary <object> <attribute> <filename> add an attribute from a file\n"
-		"attributereplace   <object> <attribute> <value>    replace an attribute\n"
+		"attributereplace   <sAMAccountName> <attribute> <value>   replace an attribute\n"
 		"attributedelete    <object> <attribute> [value]    delete an attribute or attribute instance\n"
 		"\n"
 		"search             <attribute> <value>             simple ldap search\n"
@@ -376,7 +376,7 @@ void attributeget(char **argv) {
 	object=argv[0];
 	attribute=argv[1];
 
-        dn=ad_search("name", object);
+        dn=ad_search("sAMAccountName", object);
         if(ad_get_error_num()!=AD_SUCCESS) {
                 fprintf(stderr, "error: %s\n", ad_get_error());
                 exit(1);
@@ -472,7 +472,7 @@ void attributereplace(char **argv) {
 	attribute=argv[1];
 	value=argv[2];
 
-        dn=ad_search("name", object);
+        dn=ad_search("sAMAccountName", object);
         if(ad_get_error_num()!=AD_SUCCESS) {
                 fprintf(stderr, "error: %s\n", ad_get_error());
                 exit(1);
